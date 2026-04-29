@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "校园网自动认证",
+  "version": "1.0",
+  "description": "检测网络并在校园网认证页面自动填写密码登录",
+  "permissions": ["storage", "alarms", "tabs"],
+  "host_permissions": [
+    "http://10.2.10.19/*",
+    "https://www.baidu.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "设置校园网账号"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://10.2.10.19/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
