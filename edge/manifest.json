@@ -1,11 +1,17 @@
 {
   "manifest_version": 3,
   "name": "校园网自动认证",
-  "version": "1.0",
+  "version": "6.1",
   "description": "检测网络并在校园网认证页面自动填写密码登录",
-  "permissions": ["storage", "alarms", "tabs"],
+  "permissions": [
+    "storage", 
+    "alarms", 
+    "tabs"
+  ],
   "host_permissions": [
     "http://10.2.10.19/*",
+    "http://*.njpji.cn/*",
+    "https://*.njpji.cn/*",
     "https://www.baidu.com/*"
   ],
   "background": {
@@ -13,12 +19,25 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "设置校园网账号"
+    "default_title": "设置校园网账号",
+    "default_icon": "icon.png"  
   },
+  "icons": {
+    "16": "icon.png",   
+    "48": "icon.png",   
+    "128": "icon.png"   
+  },
+
   "content_scripts": [
     {
-      "matches": ["http://10.2.10.19/*"],
-      "js": ["content.js"],
+      "matches": [
+        "http://10.2.10.19/*",
+        "http://*.njpji.cn/*",
+        "https://*.njpji.cn/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_end"
     }
   ]
